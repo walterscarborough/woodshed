@@ -20,7 +20,6 @@ class SingleLinkedList {
 
     this.head = node;
   }
-
 }
 
 class Node {

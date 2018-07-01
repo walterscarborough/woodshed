@@ -9,6 +9,7 @@ function main() {
 
   shellcheck scripts/*
   yarn run lint
+  yarn run check-circular-dependencies
   yarn run test
 
   git push

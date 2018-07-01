@@ -1,3 +1,19 @@
+const getLastNode = nextNode => {
+  if (nextNode.next !== null) {
+    return getLastNode(nextNode.next);
+  }
+
+  return nextNode;
+};
+
+const pruneDanglingNext = (nextNode, lastNode) => {
+  if (nextNode.next !== lastNode) {
+    return pruneDanglingNext(nextNode.next, lastNode);
+  }
+
+  nextNode.next = null;
+};
+
 class SingleLinkedList {
   head = null;
 
@@ -6,22 +22,6 @@ class SingleLinkedList {
   }
 
   popBack() {
-    const getLastNode = nextNode => {
-      if (nextNode.next !== null) {
-        return getLastNode(nextNode.next);
-      }
-
-      return nextNode;
-    };
-
-    const pruneDanglingNext = (nextNode, lastNode) => {
-      if (nextNode.next !== lastNode) {
-        return pruneDanglingNext(nextNode.next, lastNode);
-      }
-
-      nextNode.next = null;
-    };
-
     const lastNode = getLastNode(this.head);
     pruneDanglingNext(this.head, lastNode);
 
@@ -36,6 +36,11 @@ class SingleLinkedList {
     return headNode;
   }
 
+  pushBack(node) {
+    const lastNode = getLastNode(this.head);
+    lastNode.next = node;
+  }
+
   pushFront(node) {
     if (this.head !== null) {
       node.next = this.head;
@@ -45,16 +50,6 @@ class SingleLinkedList {
   }
 }
 
-class Node {
-  data = null;
-  next = null;
-
-  constructor(data) {
-    this.data = data;
-  }
-}
-
 module.exports = {
   SingleLinkedList,
-  Node,
 };

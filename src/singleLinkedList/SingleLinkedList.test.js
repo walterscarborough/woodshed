@@ -1,5 +1,6 @@
 import test from 'ava';
-import {SingleLinkedList, Node, } from './SingleLinkedList';
+import {SingleLinkedList, } from './SingleLinkedList';
+import {Node, } from './Node';
 
 test('empty() returns false when a list is empty', async t => {
   const linkedList = new SingleLinkedList();
@@ -44,7 +45,22 @@ test('popFront() removes the current head node', async t => {
   t.is(poppedNode, node);
 });
 
-test('pushFront() inserts a new node', async t => {
+test('pushBack() inserts a new node at the end of the list', async t => {
+  const nodeA = new Node('A');
+  const nodeB = new Node('B');
+  const nodeC = new Node('C');
+  const linkedList = new SingleLinkedList();
+
+  linkedList.pushFront(nodeA);
+  linkedList.pushFront(nodeB);
+  linkedList.pushBack(nodeC);
+
+  t.is(linkedList.head, nodeB);
+  t.is(linkedList.head.next, nodeA);
+  t.is(linkedList.head.next.next, nodeC);
+});
+
+test('pushFront() inserts a new node at the front of the list', async t => {
   const node = new Node('A');
   const linkedList = new SingleLinkedList();
 

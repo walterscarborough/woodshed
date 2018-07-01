@@ -49,6 +49,21 @@ class SingleLinkedList {
     this.head = node;
   }
 
+  reverse() {
+    let previous = null;
+    let current = this.head;
+    let next = null;
+
+    while (current !== null) {
+      next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+    }
+
+    this.head = previous;
+  }
+
   size() {
     const countNodes = (nextNode, counter = 0) => {
       counter += 1;

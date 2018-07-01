@@ -110,6 +110,24 @@ test('pushFront() inserts a new node that points to the previous node', async t 
   t.is(getLinkedListSize(linkedList), 2);
 });
 
+test('reverse() reverses the order of the list', async t => {
+  const nodeA = new Node('A');
+  const nodeB = new Node('B');
+  const nodeC = new Node('C');
+  const linkedList = new SingleLinkedList();
+
+  linkedList.pushFront(nodeA);
+  linkedList.pushFront(nodeB);
+  linkedList.pushFront(nodeC);
+
+  linkedList.reverse();
+
+  t.is(linkedList.head, nodeA);
+  t.is(linkedList.head.next, nodeB);
+  t.is(linkedList.head.next.next, nodeC);
+  t.is(getLinkedListSize(linkedList), 3);
+});
+
 test('size() is 0 when the list is empty', async t => {
   const linkedList = new SingleLinkedList();
 

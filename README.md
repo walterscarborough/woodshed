@@ -5,15 +5,22 @@
 
 This repo isn't about music; instead, it's about practice for data structures, algorithms, and any other interesting things that I find in the JavaScript world.
 
-# Install Yarn Dependencies 🚧
+## Installing Dependencies
+
+### Project Dependencies
+```
+  brew install node yarn shellcheck
+```
+
+### Yarn Dependencies 🚧
 ```
   yarn install
 ```
 
-# Running Tests 🔬
+## Running Tests 🔬
 ```
   yarn test
 ```
 
-# License
+## License
 MIT

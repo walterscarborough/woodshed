@@ -19,6 +19,6 @@
     "check-circular-dependencies": "madge --circular src",
     "lint": "eslint src",
     "lint-fix": "eslint --fix src",
-    "test": "node --harmony ./node_modules/.bin/ava --tap | tap-nyan"
+    "test": "node --harmony ./node_modules/.bin/ava --verbose"
   }
 }

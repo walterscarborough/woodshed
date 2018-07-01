@@ -8,6 +8,10 @@ class SingleLinkedList {
 
     this.head = node;
   }
+
+  isEmpty() {
+    return this.head === null;
+  }
 }
 
 class Node {

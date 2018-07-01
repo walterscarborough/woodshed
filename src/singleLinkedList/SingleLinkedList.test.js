@@ -1,6 +1,49 @@
 import test from 'ava';
 import {SingleLinkedList, Node, } from './SingleLinkedList';
 
+test('empty() returns false when a list is empty', async t => {
+  const linkedList = new SingleLinkedList();
+
+  t.is(linkedList.isEmpty(), true);
+});
+
+test('empty() returns true when a list is not empty', async t => {
+  const node = new Node('A');
+  const linkedList = new SingleLinkedList();
+
+  linkedList.pushFront(node);
+
+  t.is(linkedList.isEmpty(), false);
+});
+
+test('popBack() removes the current end node', async t => {
+  const nodeA = new Node('A');
+  const nodeB = new Node('B');
+  const nodeC = new Node('C');
+  const linkedList = new SingleLinkedList();
+  linkedList.pushFront(nodeA);
+  linkedList.pushFront(nodeB);
+  linkedList.pushFront(nodeC);
+
+  const poppedNode = linkedList.popBack();
+
+  t.is(linkedList.head, nodeC);
+  t.is(linkedList.head.next, nodeB);
+  t.is(linkedList.head.next.next, null);
+  t.is(poppedNode, nodeA);
+});
+
+test('popFront() removes the current head node', async t => {
+  const node = new Node('A');
+  const linkedList = new SingleLinkedList();
+  linkedList.pushFront(node);
+
+  const poppedNode = linkedList.popFront();
+
+  t.is(linkedList.head, null);
+  t.is(poppedNode, node);
+});
+
 test('pushFront() inserts a new node', async t => {
   const node = new Node('A');
   const linkedList = new SingleLinkedList();
@@ -25,30 +68,4 @@ test('pushFront() inserts a new node that points to the previous node', async t 
   t.is(linkedList.head.next, lastNode);
   t.is(linkedList.head.next.data, 'B');
   t.is(linkedList.head.next.next, null);
-});
-
-test('empty() returns false when a list is empty', async t => {
-  const linkedList = new SingleLinkedList();
-
-  t.is(linkedList.isEmpty(), true);
-});
-
-test('empty() returns true when a list is not empty', async t => {
-  const node = new Node('A');
-  const linkedList = new SingleLinkedList();
-
-  linkedList.pushFront(node);
-
-  t.is(linkedList.isEmpty(), false);
-});
-
-test('popFront() removes the current head node', async t => {
-  const node = new Node('A');
-  const linkedList = new SingleLinkedList();
-  linkedList.pushFront(node);
-
-  const poppedNode = linkedList.popFront();
-
-  t.is(linkedList.head, null);
-  t.is(poppedNode, node);
 });

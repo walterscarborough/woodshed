@@ -1,6 +1,18 @@
 class SingleLinkedList {
   head = null;
 
+  isEmpty() {
+    return this.head === null;
+  }
+
+  popFront() {
+    const headNode = this.head;
+
+    this.head = null;
+
+    return headNode;
+  }
+
   pushFront(node) {
     if (this.head !== null) {
       node.next = this.head;
@@ -9,9 +21,6 @@ class SingleLinkedList {
     this.head = node;
   }
 
-  isEmpty() {
-    return this.head === null;
-  }
 }
 
 class Node {

@@ -36,7 +36,19 @@ test('empty() returns false when a list is empty', async t => {
 test('empty() returns true when a list is not empty', async t => {
   const node = new Node('A');
   const linkedList = new SingleLinkedList();
+
   linkedList.pushFront(node);
 
   t.is(linkedList.isEmpty(), false);
+});
+
+test('popFront() removes the current head node', async t => {
+  const node = new Node('A');
+  const linkedList = new SingleLinkedList();
+  linkedList.pushFront(node);
+
+  const poppedNode = linkedList.popFront();
+
+  t.is(linkedList.head, null);
+  t.is(poppedNode, node);
 });

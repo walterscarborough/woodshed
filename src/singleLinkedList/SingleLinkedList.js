@@ -26,4 +26,4 @@ class Node {
 module.exports = {
   SingleLinkedList,
   Node,
-}
+};
